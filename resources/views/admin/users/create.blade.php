@@ -1,0 +1,99 @@
+@extends('layouts.app')
+@section('title', 'Buat User')
+
+@section('sidebar')
+<div class="p-6">
+    <h2 class="text-lg font-bold mb-6 tracking-wide text-gray-200 uppercase">Admin Menu</h2>
+    <ul class="space-y-2">
+        <li>
+            <a href="/admin/dashboard"
+               class="flex items-center px-4 py-2 rounded-md hover:bg-gray-700 transition 
+                      {{ Request::is('admin/dashboard') ? 'bg-gray-700 font-semibold' : '' }}">
+                <svg class="w-5 h-5 mr-3 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24">
+                    <path d="M3 12l2-2m0 0l7-7 7 7m-9 2v8m-4 4h12a2 2 0 002-2v-6a2 2 0 00-2-2h-4"></path>
+                </svg>
+                Dashboard
+            </a>
+        </li>
+        <li>
+            <a href="/admin/users"
+               class="flex items-center px-4 py-2 rounded-md hover:bg-gray-700 transition 
+                      {{ Request::is('admin/users') || Request::is('admin/users/*') ? 'bg-gray-700 font-semibold' : '' }}">
+                <svg class="w-5 h-5 mr-3 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24">
+                    <path d="M17 20h5v-2a4 4 0 00-5-4m-6 6v-2a4 4 0 00-3-3.87M12 4a4 4 0 100 8 4 4 0 000-8z"></path>
+                </svg>
+                Users
+            </a>
+        </li>
+        <li>
+            <a href="/admin/athletes"
+               class="flex items-center px-4 py-2 rounded-md hover:bg-gray-700 transition 
+                      {{ Request::is('admin/athletes') || Request::is('admin/athletes/*') ? 'bg-gray-700 font-semibold' : '' }}">
+                <svg class="w-5 h-5 mr-3 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24">
+                    <path d="M5 13l4 4L19 7"></path>
+                </svg>
+                Data Atlit
+            </a>
+        </li>
+    </ul>
+</div>
+@endsection
+@section('content')
+    <div class="container mx-auto mt-8">
+        @if ($errors->any())
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+        <h1 class="text-3xl font-bold mb-6">Buat User</h1>
+        <div class="bg-white p-8 rounded-lg shadow-md">
+            <form method="POST" action="/admin/users">
+                @csrf
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Nama</label>
+                    <input type="text" name="name" id="name" value="{{ old('name') }}" required class="w-full px-3 py-2 border @error('name') border-red-500 @enderror border-gray-300 rounded-md focus:outline-none focus:border-green-500">
+                     @error('name')<p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                    <input type="email" name="email" id="email"  value="{{ old('email') }}" required class="w-full px-3 py-2 border @error('email') border-red-500 @enderror border-gray-300 rounded-md focus:outline-none focus:border-green-500">
+                    @error('email')<p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                    <input type="password" name="password" id="password"  class="w-full px-3 py-2 border @error('password') border-red-500 @enderror border-gray-300 rounded-md focus:outline-none focus:border-green-500">
+                    @error('password')<p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
+                </div>
+                <div class="mb-4">
+                    <label for="role" class="block text-gray-700 text-sm font-bold mb-2">Role</label>
+                    <select name="role" id="role" class="w-full px-3 py-2 border @error('role') border-red-500 @enderror border-gray-300 rounded-md focus:outline-none focus:border-green-500">
+                        <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
+                        <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                    </select>
+                    @error('role')<p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
+                </div>
+                <div class="mb-6">
+                    <label for="status" class="block text-gray-700 text-sm font-bold mb-2">Status</label>
+                    <select name="status" id="status" class="w-full px-3 py-2 border @error('status') border-red-500 @enderror border-gray-300 rounded-md focus:outline-none focus:border-green-500">
+                        <option value="pending" {{ old('status') == 'pending' ? 'selected' : '' }}>Pending</option>
+                        <option value="approved" {{ old('status') == 'approved' ? 'selected' : '' }}>Approved</option>
+                        <option value="rejected" {{ old('status') == 'rejected' ? 'selected' : '' }}>Rejected</option>
+                    </select>
+                    @error('status')<p class="text-red-500 text-xs italic">{{ $message }}</p>@enderror
+                </div>
+                <div class="flex items-center justify-between">
+                    <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Buat</button>
+                    <a href="/admin/users" class="text-green-500 hover:text-green-600">Kembali</a>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+@endsection
