@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 Route::get('/', function () {return view('welcome');
 });
@@ -48,6 +49,15 @@ Route::middleware(['auth'])->group(function () {
         // Export
     Route::get('/admin/athletes/export', [AdminController::class, 'export'])->name('admin.athletes.export');
     Route::get('/admin/athletes/export/{userId}', [AdminController::class, 'exportByUser'])->name('admin.athletes.exportbyuser');
+    Route::get('/file/{filename}', function ($filename) {
+        $path = 'public/' . $filename;
+    
+        if (!Storage::exists($path)) {
+            abort(404);
+        }
+    
+        return response()->file(storage_path('app/' . $path));
+    })->name('view.file');
     }
     );
 });

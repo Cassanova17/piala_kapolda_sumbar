@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class AthleteController extends Controller
 {
@@ -36,6 +37,10 @@ class AthleteController extends Controller
             'jenis_kelamin' => 'required|in:Putra,Putri',
             'akte' => 'nullable|file|mimes:pdf',
             'sertifikat_sabuk' => 'nullable|file|mimes:pdf',
+            'jenis_pertandingan' => 'required|in:Kyourigi,Poomsae,Poomsae Freestyle',
+            'kelompok_umur' => 'required|in:Pra Cadet A,Pra Cadet B,Pra Cadet C,Cadet,Junior,Senior',
+            'tingkat_pertandingan' => 'required|in:Pemula,Semi Prestasi,Prestasi',
+            'kelas_pertandingan' => 'nullable',
         ]);
 
         if ($validator->fails()) {
@@ -87,6 +92,10 @@ class AthleteController extends Controller
             'jenis_kelamin' => 'required|in:Putra,Putri',
             'akte' => 'nullable|file|mimes:pdf',
             'sertifikat_sabuk' => 'nullable|file|mimes:pdf',
+            'jenis_pertandingan' => 'required|in:Kyourigi,Poomsae,Poomsae Freestyle',
+            'kelompok_umur' => 'required|in:Pra Cadet A,Pra Cadet B,Pra Cadet C,Cadet,Junior,Senior',
+            'tingkat_pertandingan' => 'required|in:Pemula,Semi Prestasi,Prestasi',
+            'kelas_pertandingan' => 'nullable',
         ]);
 
         if ($validator->fails()) {

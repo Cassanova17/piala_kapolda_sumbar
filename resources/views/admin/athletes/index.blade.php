@@ -35,7 +35,8 @@
         <li>
             <a href="/admin/athletes"
                class="flex items-center px-4 py-2 rounded-md hover:bg-gray-700 transition {{ Request::is('admin/athletes*') ? 'bg-gray-700 font-semibold' : '' }}">
-                <svg class="w-5 h-5 mr-3 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                
+               <svg class="w-5 h-5 mr-3 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M5 13l4 4L19 7"></path>
                 </svg>
                 Data Atlit
@@ -86,6 +87,10 @@
                                 <th class="px-6 py-3 text-left">Jenis Kelamin</th>
                                 <th class="px-6 py-3 text-left">Akte</th>
                                 <th class="px-6 py-3 text-left">Sertifikat Sabuk</th>
+                                <th class="px-6 py-3 text-left">Jenis Pertandingan</th>
+                                <th class="px-6 py-3 text-left">Kelompok Umur</th>
+                                <th class="px-6 py-3 text-left">Tingkat Pertandingan</th>
+                                <th class="px-6 py-3 text-left">Kelas Pertandingan</th>
                                 <th class="px-6 py-3 text-right">Aksi</th>
                             </tr>
                         </thead>
@@ -101,8 +106,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $athlete->jenis_kelamin }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     @if ($athlete->akte)
-                                        <a href="{{ asset('storage/' . $athlete->akte) }}" target="_blank" class="text-blue-600 hover:underline">
-                                            Lihat Akte
+                                    <a href="{{ route('view.file', basename($athlete->akte)) }}" target="_blank">Lihat Akte</a>
                                         </a>
                                     @else
                                         <span class="text-gray-400 italic">Tidak ada</span>
@@ -110,13 +114,16 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     @if ($athlete->sertifikat_sabuk)
-                                        <a href="{{ asset('storage/' . $athlete->sertifikat_sabuk) }}" target="_blank" class="text-blue-600 hover:underline">
-                                            Lihat Sertifikat
+                                        <a href="{{ route('view.file', basename($athlete->sertifikat_sabuk)) }}" target="_blank">Lihat Sertifikat</a>
                                         </a>
                                     @else
                                         <span class="text-gray-400 italic">Tidak ada</span>
                                     @endif
                                 </td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $athlete->jenis_pertandingan }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $athlete->kelompok_umur }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $athlete->tingkat_pertandingan }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $athlete->kelas_pertandingan }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right">
                                     <a href="{{ url('/admin/athletes/' . $athlete->id . '/edit') }}"
                                        class="text-blue-600 hover:text-blue-800 mr-2">Edit</a>

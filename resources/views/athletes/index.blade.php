@@ -18,17 +18,6 @@
                     Dashboard
                 </a>
             </li>
-            <li>
-                <a href="/athletes/championships"
-                   class="flex items-center px-4 py-2 rounded-md hover:bg-gray-700 transition 
-                          {{ Request::is('athletes/championships') ? 'bg-gray-700 font-semibold' : '' }}">
-                    <svg class="w-5 h-5 mr-3 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
-                         viewBox="0 0 24 24">
-                        <path d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    Data Kejuaraan
-                </a>
-            </li>
         </ul>
     </div>
 </aside>
@@ -63,6 +52,10 @@
                     <th class="px-6 py-4 text-left  uppercase tracking-wider">Jenis Kelamin</th>
                     <th class="px-6 py-4 text-left  uppercase tracking-wider">Akte Kelahiran</th>
                     <th class="px-6 py-4 text-left  uppercase tracking-wider">Sertifikat Sabuk</th>
+                    <th class="px-6 py-4 text-left  uppercase tracking-wider">Jenis Pertandingan</th>
+                    <th class="px-6 py-4 text-left  uppercase tracking-wider">Kelompok Umur</th>
+                    <th class="px-6 py-4 text-left  uppercase tracking-wider">Tingkat Pertandingan</th>
+                    <th class="px-6 py-4 text-left  uppercase tracking-wider">Kelas Pertandingan</th>
                     <th class="px-6 py-4 text-left  uppercase tracking-wider">Edit</th>
                 </tr>
             </thead>
@@ -77,6 +70,10 @@
                     <td class="px-6 py-5">{{ $athlete->jenis_kelamin }}</td>
                     <td class="px-6 py-5">{{ $athlete->akte ? $athlete->akte : '-' }}</td>
                     <td class="px-6 py-5">{{ $athlete->sertifikat_sabuk ? $athlete->sertifikat_sabuk : '-' }}</td>
+                    <td class="px-6 py-5">{{ $athlete->jenis_pertandingan }}</td>
+                    <td class="px-6 py-5">{{ $athlete->kelompok_umur }}</td>
+                    <td class="px-6 py-5">{{ $athlete->tingkat_pertandingan }}</td>
+                    <td class="px-6 py-5">{{ $athlete->kelas_pertandingan }}</td>
                     <td class="px-6 py-5 text-center">
                         <a href="/athletes/{{ $athlete->id }}/edit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded shadow-md transition duration-300 ease-in-out">Edit</a>
                     </td>

@@ -20,7 +20,11 @@ class Athlete extends Model
         'no_hp',
         'jenis_kelamin',
         'akte',
-        'sertifikat_sabuk'
+        'sertifikat_sabuk',
+        'jenis_pertandingan',
+        'kelompok_umur',
+        'tingkat_pertandingan',
+        'kelas_pertandingan',
     ];
 
     public function user()

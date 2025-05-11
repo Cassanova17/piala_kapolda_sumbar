@@ -35,6 +35,16 @@ class AthletesExport implements FromCollection, WithHeadings, ShouldAutoSize
                 'Jenis Kelamin' => $athlete->jenis_kelamin,
                 'Akte' => $athlete->akte,
                 'Sertifikat Sabuk' => $athlete->sertifikat_sabuk,
+                'Lihat Akte' => $athlete->akte 
+                ? asset('storage/akte/' . $athlete->akte) 
+                : '-',
+            'Lihat Sertifikat' => $athlete->sertifikat_sabuk 
+                ? asset('storage/sertifikat_sabuk/' . $athlete->sertifikat_sabuk) 
+                : '-',
+                'Jenis Pertandingan' => $athlete->jenis_pertandingan,   
+                'Kelompok Umur' => $athlete->kelompok_umur,
+                'Tingkat Pertandingan' => $athlete->tingkat_pertandingan,
+                'Kelas Pertandingan' => $athlete->kelas_pertandingan,
             ];
         });
     }
@@ -50,8 +60,12 @@ class AthletesExport implements FromCollection, WithHeadings, ShouldAutoSize
             'Jenis Kelamin',
             'Akte',
             'Sertifikat Sabuk',
-            'Dibuat Pada',
-            'Diperbarui Pada',
+            'Lihat Akte',
+            'Lihat Sertifikat',
+            'Jenis Pertandingan',
+            'Kelompok Umur',
+            'Tingkat Pertandingan',
+            'Kelas Pertandingan',
         ];
     }
 }

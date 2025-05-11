@@ -26,6 +26,10 @@ return new class extends Migration
             $table->enum('jenis_kelamin', ['Putra', 'Putri']);  
             $table->string('akte')->nullable();
             $table->string('sertifikat_sabuk')->nullable();
+            $table->enum('jenis_pertandingan', ['Kyourigi', 'Poomsae', 'Poomsae Freestyle']);
+            $table->enum('kelompok_umur', ['Pra Cadet A', 'Pra Cadet B', 'Pra Cadet C', 'Cadet', 'Junior', 'Senior']);
+            $table->enum('tingkat_pertandingan', ['Pemula', 'Semi Prestasi', 'Prestasi']);
+            $table->string('kelas_pertandingan')->nullable();      
             $table->timestamps();
         });
     }
