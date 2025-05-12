@@ -96,6 +96,7 @@
             <div class="flex items-center space-x-6">
                 <img src="/images/world-taekwondo-logo-bg.png" class="h-12" alt="World Taekwondo">
                 <img src="/images/taekwondo-indonesia-logo-bg.png" class="h-12" alt="Taekwondo Indonesia">
+                <img src="/images/polda_sumbar.jpeg" class="h-12" alt="Taekwondo Indonesia">
                 <div class="hidden md:block border-l border-white/20 h-12"></div>
                 <div class="hidden md:block">
                     <h1 class="text-xl font-bold">PIALA KAPOLDA SUMBAR</h1>
@@ -113,7 +114,7 @@
             <!-- Navigation Links -->
             <nav id="nav-menu" class="hidden md:flex space-x-8">
                 <a href="#beranda" class="nav-link text-white hover:text-red-300 transition duration-300 font-medium">Beranda</a>
-                <a href="#tentang" class="nav-link text-white hover:text-red-300 transition duration-300 font-medium">Tentang</a>
+                <a href="{{ route('tentang') }}" class="nav-link text-white hover:text-red-300 transition duration-300 font-medium">Tentang</a>
                 <a href="#jadwal" class="nav-link text-white hover:text-red-300 transition duration-300 font-medium">Jadwal</a>
                 <a href="#kategori" class="nav-link text-white hover:text-red-300 transition duration-300 font-medium">Kategori</a>
                 <a href="#galeri" class="nav-link text-white hover:text-red-300 transition duration-300 font-medium">Galeri</a>
@@ -126,7 +127,7 @@
         <div id="mobile-menu" class="md:hidden hidden bg-blue-900 px-4 py-3">
             <div class="flex flex-col space-y-3">
                 <a href="#beranda" class="text-white hover:text-red-300 transition duration-300">Beranda</a>
-                <a href="#tentang" class="text-white hover:text-red-300 transition duration-300">Tentang</a>
+                <a href="{{ route('tentang') }}" class="text-white hover:text-red-300 transition duration-300">Tentang</a>
                 <a href="#jadwal" class="text-white hover:text-red-300 transition duration-300">Jadwal</a>
                 <a href="#kategori" class="text-white hover:text-red-300 transition duration-300">Kategori</a>
                 <a href="#galeri" class="text-white hover:text-red-300 transition duration-300">Galeri</a>
@@ -207,7 +208,7 @@
                         </div>
                     </div>
                     
-                    <a href="{{ route('register') }}" class="inline-block mt-6 btn-primary text-white font-semibold px-8 py-3 rounded-md">Daftar Sekarang</a>
+                    <a href="{{ route('tentang') }}" class="inline-block mt-6 btn-primary text-white font-semibold px-8 py-3 rounded-md">Tentang Kejuaraan</a>
                 </div>
             </div>
         </div>
@@ -743,6 +744,7 @@
     <div class="flex items-center space-x-6">
         <img src="/images/world-taekwondo-logo-bg.png" class="h-10" alt="World Taekwondo">
         <img src="/images/taekwondo-indonesia-logo-bg.png" class="h-10" alt="Taekwondo Indonesia">
+        <img src="/images/polda_sumbar.jpeg" class="h-12" alt="Taekwondo Indonesia">
     </div>
 </div>
         </div>

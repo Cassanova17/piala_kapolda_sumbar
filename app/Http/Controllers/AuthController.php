@@ -33,8 +33,8 @@ class AuthController extends Controller
                ])->onlyInput('email');
             } else if ($user->role === 'admin') {
                 return redirect()->intended('/admin/dashboard');
-            } else {
-                return redirect()->intended('/athletes');
+           } else {
+                return redirect()->intended('/dashboard');
             }
         }
 

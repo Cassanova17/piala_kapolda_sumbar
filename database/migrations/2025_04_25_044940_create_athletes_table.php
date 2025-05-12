@@ -29,7 +29,9 @@ return new class extends Migration
             $table->enum('jenis_pertandingan', ['Kyourigi', 'Poomsae', 'Poomsae Freestyle']);
             $table->enum('kelompok_umur', ['Pra Cadet A', 'Pra Cadet B', 'Pra Cadet C', 'Cadet', 'Junior', 'Senior']);
             $table->enum('tingkat_pertandingan', ['Pemula', 'Semi Prestasi', 'Prestasi']);
-            $table->string('kelas_pertandingan')->nullable();      
+            $table->string('kelas_pertandingan')->nullable();
+            $table->boolean('sudah_bayar')->default(false);
+            $table->integer('jumlah_pembayaran')->nullable();      
             $table->timestamps();
         });
     }

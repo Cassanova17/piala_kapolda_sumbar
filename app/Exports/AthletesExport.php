@@ -7,6 +7,7 @@ use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Illuminate\Support\Facades\URL;
 
 class AthletesExport implements FromCollection, WithHeadings, ShouldAutoSize
 {
@@ -17,15 +18,9 @@ class AthletesExport implements FromCollection, WithHeadings, ShouldAutoSize
         $this->athletes = $athletes;
     }
 
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-
     public function collection()
-    {   
-        
+    {
         return $this->athletes->map(function ($athlete) {
-
             return [
                 'Nama' => $athlete->name,
                 'Tempat Lahir' => $athlete->tempat_lahir,
@@ -33,18 +28,18 @@ class AthletesExport implements FromCollection, WithHeadings, ShouldAutoSize
                 'NIK' => $athlete->nik,
                 'No HP' => $athlete->no_hp,
                 'Jenis Kelamin' => $athlete->jenis_kelamin,
-                'Akte' => $athlete->akte,
-                'Sertifikat Sabuk' => $athlete->sertifikat_sabuk,
-                'Lihat Akte' => $athlete->akte 
-                ? asset('storage/akte/' . $athlete->akte) 
-                : '-',
-            'Lihat Sertifikat' => $athlete->sertifikat_sabuk 
-                ? asset('storage/sertifikat_sabuk/' . $athlete->sertifikat_sabuk) 
-                : '-',
-                'Jenis Pertandingan' => $athlete->jenis_pertandingan,   
+                'Akte' => $athlete->akte 
+                    ? URL::route('view.file', ['filename' => basename($athlete->akte)])
+                    : '-',
+                'Sertifikat Sabuk' => $athlete->sertifikat_sabuk 
+                    ? URL::route('view.file', ['filename' => basename($athlete->sertifikat_sabuk)])
+                    : '-',
+                'Jenis Pertandingan' => $athlete->jenis_pertandingan,
                 'Kelompok Umur' => $athlete->kelompok_umur,
                 'Tingkat Pertandingan' => $athlete->tingkat_pertandingan,
                 'Kelas Pertandingan' => $athlete->kelas_pertandingan,
+                'Keterangan Pembayaran' => $athlete->sudah_bayar ? 'Sudah Bayar' : 'Belum Bayar',
+                'Jumlah Pembayaran' => 'Rp. ' . number_format($athlete->jumlah_pembayaran, 0, ',', '.'),
             ];
         });
     }
@@ -60,12 +55,12 @@ class AthletesExport implements FromCollection, WithHeadings, ShouldAutoSize
             'Jenis Kelamin',
             'Akte',
             'Sertifikat Sabuk',
-            'Lihat Akte',
-            'Lihat Sertifikat',
             'Jenis Pertandingan',
             'Kelompok Umur',
             'Tingkat Pertandingan',
             'Kelas Pertandingan',
+            'Keterangan Pembayaran',
+            'Jumlah Pembayaran',
         ];
     }
 }
