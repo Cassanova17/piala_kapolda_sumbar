@@ -3,7 +3,7 @@
 @section('title', 'Change Password')
 
 @section('sidebar')
-<aside class="bg-gray-900 text-white w-64 min-h-screen">
+<aside class="fixed top-0 left-0 bg-gray-900 text-white w-64 h-screen">
     <div class="p-6">
         <h2 class="text-xl font-bold mb-8 tracking-wide text-gray-100 uppercase border-b border-gray-700 pb-3">User Menu</h2>
         <ul class="space-y-3">

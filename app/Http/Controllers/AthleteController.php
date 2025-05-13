@@ -27,8 +27,21 @@ class AthleteController extends Controller
 
     public function index()
     {
-        $athletes = Athlete::where('user_id', Auth::id())->get();
-        return view('athletes.index', compact('athletes'));
+        $allAthletes = Athlete::where('user_id', Auth::id())->get();
+
+        $query = Athlete::where('user_id', Auth::id());
+
+        if ($search = request()->input('search')) {
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('nik', 'like', '%' . $search . '%')
+                    ->orWhere('tingkat_pertandingan', 'like', '%' . $search . '%')
+                    ->orWhere('kelompok_umur', 'like', '%' . $search . '%')
+                    ->orWhere('jenis_pertandingan', 'like', '%' . $search . '%');
+            });
+        }
+
+        return view('athletes.index', ['athletes' => $query->get(), 'allAthletes' => $allAthletes]);
     }
 
     public function create()

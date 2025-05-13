@@ -25,6 +25,8 @@ class Athlete extends Model
         'kelompok_umur',
         'tingkat_pertandingan',
         'kelas_pertandingan',
+        'jumlah_pembayaran',
+        'sudah_bayar',
     ];
 
     public function user()

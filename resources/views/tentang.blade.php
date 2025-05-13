@@ -27,6 +27,11 @@
         }
         
         header {
+            position: relative;
+        }
+
+        .header-content {
+            position: relative;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             text-align: center;
@@ -34,10 +39,16 @@
             position: relative;
         }
 
+        .return-link {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
         .hero-image {
             width: 100%;
             height: 250px;
-            background: url('/api/placeholder/1200/400') center/cover no-repeat;
+            background: url('{{ asset("images/banner.jpeg") }}') center/cover no-repeat;
             margin-bottom: 20px;
             border-radius: 10px;
             position: relative;
@@ -47,7 +58,7 @@
         .hero-overlay {
             position: absolute;
             top: 0;
-            left: 0;
+            left: 0; /* Corrected from right: 0; */
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.4);
@@ -105,7 +116,7 @@
         .detail-card {
             flex: 1 1 300px;
             background-color: white;
-            border-radius: 10px;
+            border-radius: 8px;
             padding: 1.5rem;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
@@ -113,12 +124,6 @@
         
         .detail-card:hover {
             transform: translateY(-5px);
-        }
-        
-        .detail-card i {
-            color: var(--primary-color);
-            font-size: 2rem;
-            margin-bottom: 1rem;
         }
         
         .icon {
@@ -333,14 +338,17 @@
     </style>
 </head>
 <body>
+    <a href="{{ url('/') }}" class="return-link text-gray-900 hover:underline">Kembali ke Halaman Utama</a>
     <header>
-        <div class="container">
-            <div class="hero-image">
-                <div class="hero-overlay">
-                    <h1>Kapolda Sumbar Taekwondo National Championship 2025</h1>
-                    <p>Kyrougi - Poomsae | Pemula - Semi Prestasi - Prestasi | Pra Cadet - Cadet - Junior - Senior</p>
+        <div class="header-content">
+            <div class="container">
+                <div class="hero-image">
+                    <div class="hero-overlay">
+                        <h1>Kapolda Sumbar Taekwondo National Championship 2025</h1>
+                        <p>Kyrougi - Poomsae | Pemula - Semi Prestasi - Prestasi | Pra Cadet - Cadet - Junior - Senior</p>
+                    </div>
                 </div>
-            </div>
+            </div>    
         </div>
     </header>
     
@@ -651,7 +659,6 @@
                 <p>Sbm Eka: <strong>0813 7449 7222</strong></p>
             </div>
             
-            <a href="#" class="btn">Download Formulir Pendaftaran</a>
         </section>
         
         <section class="requirements">

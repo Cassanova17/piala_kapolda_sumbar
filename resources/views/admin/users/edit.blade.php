@@ -2,15 +2,15 @@
 
 @section('title', 'Edit User')
 @section('sidebar')
-<aside class="bg-gray-900 text-white w-64 min-h-screen">
+<aside class="fixed top-0 left-0 bg-gray-900 text-white w-64 h-screen">
     <div class="p-6">
         <h2 class="text-xl font-bold mb-8 tracking-wide text-gray-100 uppercase border-b border-gray-700 pb-3">User Menu</h2>
         <ul class="space-y-3">
             <li>
                 <a href="/admin/dashboard"
                    class="flex items-center px-4 py-3 rounded-lg hover:bg-indigo-600 transition-all duration-300 
-                          {{ Request::is('dashboard') ? 'bg-indigo-700 font-semibold shadow-lg' : '' }}">
-                    <svg class="w-5 h-5 mr-3 {{ Request::is('dashboard') ? 'text-white' : 'text-gray-400' }}" fill="none" stroke="currentColor" stroke-width="2"
+                          {{ Request::is('admin/dashboard') ? 'bg-indigo-700 font-semibold shadow-lg' : '' }}">
+                    <svg class="w-5 h-5 mr-3 {{ Request::is('admin/dashboard') ? 'text-white' : 'text-gray-400' }}" fill="none" stroke="currentColor" stroke-width="2"
                          viewBox="0 0 24 24">
                         <path d="M3 12l2-2m0 0l7-7 7 7m-9 2v8m-4 4h12a2 2 0 002-2v-6a2 2 0 00-2-2h-4"></path>
                     </svg>
@@ -20,8 +20,8 @@
             <li>
                 <a href="/admin/users"
                    class="flex items-center px-4 py-3 rounded-lg hover:bg-indigo-600 transition-all duration-300 
-                          {{ Request::is('athletes') ? 'bg-indigo-700 font-semibold shadow-lg' : '' }}">
-                    <svg class="w-5 h-5 mr-3 {{ Request::is('athletes') ? 'text-white' : 'text-gray-400' }}" fill="none" stroke="currentColor" stroke-width="2"
+                          {{ Request::is('admin/users') ? 'bg-indigo-700 font-semibold shadow-lg' : '' }}">
+                    <svg class="w-5 h-5 mr-3 {{ Request::is('admin/users') ? 'text-white' : 'text-gray-400' }}" fill="none" stroke="currentColor" stroke-width="2"
                          viewBox="0 0 24 24">
                         <path d="M17 20h5v-2a4 4 0 00-5-4m-6 6v-2a4 4 0 00-3-3.87M12 4a4 4 0 100 8 4 4 0 000-8z"></path>
                     </svg>
@@ -31,8 +31,8 @@
             <li>
             <a href="/admin/athletes" 
                    class="flex items-center px-4 py-3 rounded-lg hover:bg-indigo-600 transition-all duration-300 
-                          {{ Request::is('profile') ? 'bg-indigo-700 font-semibold shadow-lg' : '' }}">
-                    <svg class="w-5 h-5 mr-3 {{ Request::is('profile') ? 'text-white' : 'text-gray-400' }}" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                          {{ Request::is('admin/athletes') ? 'bg-indigo-700 font-semibold shadow-lg' : '' }}">
+                    <svg class="w-5 h-5 mr-3 {{ Request::is('admin/athletes') ? 'text-white' : 'text-gray-400' }}" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0l-7 7m0 0l-7-7"></path>
                     </svg>
                     <span class="text-sm">Data Atlit</span>

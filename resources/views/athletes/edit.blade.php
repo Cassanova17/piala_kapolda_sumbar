@@ -3,7 +3,7 @@
 @section('title', 'Edit Data Atlit')
 
 @section('sidebar')
-<aside class="bg-gray-900 text-white w-64 min-h-screen">
+<aside class="fixed top-0 left-0 bg-gray-900 text-white w-64 h-screen">
     <div class="p-6">
         <h2 class="text-xl font-bold mb-8 tracking-wide text-gray-100 uppercase border-b border-gray-700 pb-3">User Menu</h2>
         <ul class="space-y-3">
@@ -58,7 +58,7 @@
                              viewBox="0 0 24 24">
                             <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                         </svg>
-                        <span class="text-sm">Keluar</span>
+                        <span class="text-sm">Keluart</span>
                     </button>
                 </form>
             </li>

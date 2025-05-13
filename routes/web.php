@@ -24,7 +24,7 @@ Route::post('/register', [AuthController::class, 'store']);
 Route::middleware(['auth'])->group(function () { 
     Route::get('/dashboard', [AthleteController::class, 'dashboard'])->name('dashboard');
 
-    Route::get('/athletes', [AthleteController::class, 'index']);
+    Route::get('/athletes', [AthleteController::class, 'index'])->name('athletes.index');
     Route::get('/athletes/create', [AthleteController::class, 'create']);
     Route::post('/athletes', [AthleteController::class, 'store']);
     Route::get('/athletes/{athlete}/edit', [AthleteController::class, 'edit']);

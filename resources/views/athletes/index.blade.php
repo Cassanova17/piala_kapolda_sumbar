@@ -3,7 +3,7 @@
 @section('title', 'Data Atlit Saya')
 
 @section('sidebar')
-<aside class="bg-gray-900 text-white w-64 min-h-screen">
+<aside class="fixed top-0 left-0 bg-gray-900 text-white w-64 h-screen">
     <div class="p-6">
         <h2 class="text-xl font-bold mb-8 tracking-wide text-gray-100 uppercase border-b border-gray-700 pb-3">User Menu</h2>
         <ul class="space-y-3">
@@ -58,7 +58,7 @@
                              viewBox="0 0 24 24">
                             <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                         </svg>
-                        <span class="text-sm">Keluar</span>
+                        <span class="text-sm">Keluart</span>
                     </button>
                 </form>
             </li>
@@ -99,13 +99,13 @@
 
     <!-- Statistics Cards -->
     @php
-        $totalAthletes = $athletes->count();
-        $totalBayar = $athletes->sum('jumlah_pembayaran') ?? 0;
-        $sudahBayar = $athletes->where('sudah_bayar', true)->sum('jumlah_pembayaran') ?? 0;
+        $totalAthletes = $allAthletes->count();
+        $totalBayar = $allAthletes->sum('jumlah_pembayaran') ?? 0;
+        $sudahBayar = $allAthletes->where('sudah_bayar', true)->sum('jumlah_pembayaran') ?? 0;
         $belumBayar = $totalBayar - $sudahBayar;
         $persentaseBayar = $totalBayar > 0 ? round(($sudahBayar / $totalBayar) * 100) : 0;
-        $atletBayar = $athletes->where('sudah_bayar', true)->count();
-        $atletBelumBayar = $totalAthletes - $atletBayar;
+        $atletBayar = $allAthletes->where('sudah_bayar', true)->count();
+        $atletBelumBayar = $allAthletes->where('sudah_bayar', false)->count();
     @endphp
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -190,11 +190,13 @@
     <div class="bg-white shadow-lg rounded-lg overflow-hidden mb-8">
         <div class="px-6 py-4 bg-gray-50 border-b flex justify-between items-center">
             <h2 class="text-xl font-semibold text-gray-800">Daftar Atlit</h2>
-            
-            <!-- Search form can be added here -->
-            <div class="relative">
-                <input type="text" placeholder="Cari atlit..." class="px-4 py-2 pr-8 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                <svg class="w-5 h-5 text-gray-400 absolute right-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+            <!-- Search Form -->
+            <form action="{{ route('athletes.index') }}" method="GET" class="relative">
+                <input type="text" name="search" placeholder="Cari atlit..."
+                       class="px-4 py-2 pr-8 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                       value="{{ request('search') }}">
+            <svg class="w-5 h-5 text-gray-400 absolute right-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
             </div>
