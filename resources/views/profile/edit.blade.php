@@ -32,8 +32,8 @@
             <li>
                 <a href="{{ route('profile.edit') }}" 
                    class="flex items-center px-4 py-3 rounded-lg hover:bg-indigo-600 transition-all duration-300 
-                          {{ Request::is('profile') ? 'bg-indigo-700 font-semibold shadow-lg' : '' }}">
-                    <svg class="w-5 h-5 mr-3 {{ Request::is('profile') ? 'text-white' : 'text-gray-400' }}" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                          {{ Request::is('profile/edit') ? 'bg-indigo-700 font-semibold shadow-lg' : '' }}">
+                    <svg class="w-5 h-5 mr-3 {{ Request::is('profile/edit') ? 'text-white' : 'text-gray-400' }}" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0l-7 7m0 0l-7-7"></path>
                     </svg>
                     <span class="text-sm">Edit Profil</span>
