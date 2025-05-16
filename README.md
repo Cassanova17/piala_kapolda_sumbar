@@ -21,9 +21,10 @@ The championship is a national-level Taekwondo event held to celebrate the 79th 
 *   User Registration and Authentication
 *   Athlete Management (Add, Edit, Delete Athletes)
 *   View Athlete Details and Payment Status
-*   File Uploads for Athlete Documents (Akte Kelahiran, Sertifikat Sabuk)
+*   File Uploads for Athlete Documents (Akte Kelahiran)
 *   Admin Dashboard (User Management, Athlete Management, Export Data)
 *   Payment Tracking and Progress Display
+*   Downloadable Athletes Data Per Team And All Data In Admin Role
 
 ## Installation
 
